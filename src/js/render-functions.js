@@ -5,12 +5,12 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-// Ініціалізація SimpleLightbox
+
 let lightbox;
 
 export function renderGallery(images) {
     const gallery = document.querySelector('.gallery');
-    gallery.innerHTML = '';  // Очищуємо попередні результати
+    gallery.innerHTML = '';  
 
     images.forEach(image => {
         const link = document.createElement('a');
@@ -42,8 +42,7 @@ export function renderGallery(images) {
         gallery.appendChild(card);
     });
 
-    // Ініціалізуємо або оновлюємо SimpleLightbox
-    if (!lightbox) {
+       if (!lightbox) {
         lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
     } else {
         lightbox.refresh();
