@@ -2,20 +2,29 @@
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
-// Функція для рендерингу галереї з картками зображень
+// Ініціалізація SimpleLightbox
+let lightbox;
+
 export function renderGallery(images) {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';  // Очищуємо попередні результати
 
     images.forEach(image => {
-        const card = document.createElement('div');
-        card.classList.add('gallery-card');
+        const link = document.createElement('a');
+        link.href = image.largeImageURL;
+        link.classList.add('gallery-link');
+        link.setAttribute('data-lightbox', 'gallery');
 
         const imgElement = document.createElement('img');
         imgElement.src = image.webformatURL;
         imgElement.alt = image.tags;
         imgElement.classList.add('gallery-image');
+
+        const card = document.createElement('div');
+        card.classList.add('gallery-card');
 
         const info = document.createElement('div');
         info.classList.add('gallery-info');
@@ -27,13 +36,20 @@ export function renderGallery(images) {
             <p><b>Downloads:</b> ${image.downloads}</p>
         `;
 
-        card.appendChild(imgElement);
+        link.appendChild(imgElement);
+        card.appendChild(link);
         card.appendChild(info);
         gallery.appendChild(card);
     });
+
+    // Ініціалізуємо або оновлюємо SimpleLightbox
+    if (!lightbox) {
+        lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+    } else {
+        lightbox.refresh();
+    }
 }
 
-// Функція для показу повідомлень про помилки
 export function showError(message) {
     iziToast.error({
         title: 'Error',
@@ -41,7 +57,6 @@ export function showError(message) {
     });
 }
 
-// Функція для повідомлення про відсутність результатів
 export function showNoResultsMessage() {
     iziToast.warning({
         title: 'Warning',
