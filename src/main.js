@@ -13,6 +13,8 @@ document.querySelector('.search-form').addEventListener('submit', async (event) 
         return;
     }
 
+    
+
     try {
         const images = await fetchImages(query);
         renderGallery(images);
