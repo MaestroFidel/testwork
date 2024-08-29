@@ -1,41 +1,51 @@
-/* styles.css */
+/* Стилі для контейнера */
+.wrapper-dir {
+  padding-left: 156px;
+  padding-right: 156px;
+  margin: 0 auto;
+  width: 1128px;
+}
+
+/* Стилі для галереї */
 .gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  justify-content: center; /* Додано для центрування галереї */
-  margin-top: 16px;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
-.gallery-card {
+/* Стилі для карток */
+.gallery-item {
   border: 1px solid #808080;
   width: 360px;
-  height: auto; /* Автоматична висота для адаптації контенту */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Щоб не було виходу контенту за межі картки */
-}
-
-.gallery-card:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .gallery-link {
   display: block;
   text-decoration: none;
-  height: 200px; /* Фіксована висота зображення */
+  color: inherit;
 }
 
 .gallery-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Щоб зображення завжди заповнювало картку */
+  height: 140px;
+  object-fit: cover;
 }
 
 .gallery-info {
-  display: flex;
-  justify-content: space-around;
   padding: 8px;
-  background-color: #f0f0f0; /* Додано фоновий колір для відділення від зображення */
-  font-size: 14px;
+  background-color: #f8f8f8;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
+
