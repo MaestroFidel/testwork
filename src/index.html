@@ -10,17 +10,18 @@
     <title>Image Search App</title>
 </head>
 <body>
-    <header>
+    <section class="wrapper-dir">
         <form class="search-form">
-            <input type="text" name="searchQuery" placeholder="Search images..." />
-            <button type="submit">Search</button>
+            <input type="text" class="input-search" name="searchQuery" placeholder="Search images..." />
+            <button type="submit" class="button-search">Search</button>
         </form>
     </header>
 
     <main>
-        <div class="gallery"></div>
+        <ul class="gallery"></ul>
         <!-- <div class="loader" id="loader"></div> -->
     </main>
+    </section>
 
     <script type="module" src="./main.js"></script>
 </body>
